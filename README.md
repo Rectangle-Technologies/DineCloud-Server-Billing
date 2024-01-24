@@ -163,3 +163,151 @@ It deletes a table.
 | :-------- | :------- | :-------------------------------- |
 | `branchId`      | `string` | **Required**. Branch id of the client |
 | `branchCode`      | `string` | **Required**. Branch code of the client |
+
+
+### Order
+
+#### 1. Create order
+
+```http
+  POST /api/order/createOrder
+```
+
+It creates a new order.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `tableId`      | `string` | **Required**. Id of the table to which the order belongs |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
+
+#### 2. Get all orders
+
+```http
+  POST /api/order/getAllOrders
+```
+
+It fetches all orders.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
+
+#### 3. Get order by id
+
+```http
+  POST /api/order/getOrderById?id=${id}
+```
+
+It fetches an order by id.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
+
+#### 4. Get orders by filter
+
+```http
+  POST /api/order/getOrdersByFilter
+```
+
+It fetches orders by filter.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
+| `status`      | `string` | Status of order ['In-Progress', 'Completed'] |
+
+#### 5. Add food items to order
+
+```http
+  POST /api/order/addFoodItemsToOrder?id=${id}
+```
+
+It adds food items to order.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `foodItems`      | `array of {foodItemId, quantitiy}` | **Required**. Food items to be added |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
+
+#### 6. Remove food item from order
+
+```http
+  POST /api/order/removeFoodItemFromOrder?id=${id}
+```
+
+It removes food item from order.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `foodItemId`      | `string` | **Required**. Food item to be removed |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
+
+#### 7. Mark order item delivered
+
+```http
+  POST /api/order/markOrderItemDelivered?id=${id}
+```
+
+It marks a food item of the order as delivered.
+
+**Headers**
+| Parameter | Value  |
+| :-------- | :------- |
+| `Authorization`      | `Bearer ${token}` | 
+
+**Body**
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `foodItemId`      | `string` | **Required**. Food item to be removed |
+| `branchId`      | `string` | **Required**. Branch id of the client |
+| `branchCode`      | `string` | **Required**. Branch code of the client |
