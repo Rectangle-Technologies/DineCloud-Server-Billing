@@ -1,9 +1,9 @@
-const { getModelDataByFilter, getModelDataById } = require("../../utils/internalServerComms")
+const { getModelDataByFilter } = require("../../utils/internalServerComms")
 const { errorResponse, successResponse } = require("../../utils/response")
 
 exports.GetAllTables = async (req, res) => {
     try {
-        const response = await getModelDataByFilter('Table', {}, req.headers.authorization)
+        const response = await getModelDataByFilter('Table', req.body, req.headers.authorization)
 
         successResponse(res, response.data.data, 'Table fetched successfully')
     } catch (error) {
@@ -27,7 +27,7 @@ exports.GetTableById = async (req, res) => {
             }, 403)
         }
 
-        const response = await getModelDataById('Table', id, req.headers.authorization)
+        const response = await getModelDataByFilter('Table', { _id: id, ...req.body }, req.headers.authorization)
 
         if (!response.data.data[0].Table.length) {
             return errorResponse(res, {

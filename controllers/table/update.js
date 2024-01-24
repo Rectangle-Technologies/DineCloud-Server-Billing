@@ -1,4 +1,4 @@
-const { getModelDataById, saveDataByModel } = require("../../utils/internalServerComms")
+const { getModelDataById, saveDataByModel, getModelDataByFilter } = require("../../utils/internalServerComms")
 const { errorResponse, successResponse } = require("../../utils/response")
 
 exports.UpdateTable = async (req, res) => {
@@ -16,7 +16,7 @@ exports.UpdateTable = async (req, res) => {
             }, 403)
         }
 
-        const tableResponse = await getModelDataById('Table', id, req.headers.authorization)
+        const tableResponse = await getModelDataByFilter('Table', { _id: id, ...req.body }, req.headers.authorization)
         if (!tableResponse.data.data[0].Table.length) {
             return errorResponse(res, {
                 status: "error",

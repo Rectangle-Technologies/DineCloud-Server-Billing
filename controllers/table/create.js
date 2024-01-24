@@ -4,7 +4,7 @@ const { errorResponse, successResponse } = require("../../utils/response")
 exports.CreateTable = async (req, res) => {
     try {
         const data = req.body
-        data.status = 'available'
+        data.status = 'Available'
 
         const response = await saveDataByModel('Table', data, req.headers.authorization)
 
