@@ -308,6 +308,6 @@ It marks a food item of the order as delivered.
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `foodItemId`      | `string` | **Required**. Food item to be removed |
+| `foodItemId`      | `string` | **Required**. Food item to be marked delivered |
 | `branchId`      | `string` | **Required**. Branch id of the client |
 | `branchCode`      | `string` | **Required**. Branch code of the client |
